@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/modules/quran/sura_details_view.dart';
 
+import '../../../core/style/my_theme.dart';
+
 class SuraNameWidget extends StatelessWidget {
   final String suraName;
   final int suraNumber;
@@ -23,28 +25,28 @@ class SuraNameWidget extends StatelessWidget {
           children: [
             Expanded(
               child: Text(
-                "${suraNumber + 1}",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+                  "${suraNumber + 1}",
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.bodyLarge!.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: MyTheme.thememode != ThemeMode.dark
+                          ? Colors.black
+                          : Colors.white)),
             ),
             Container(
               width: 2,
               height: 40,
-              color: theme.primaryColor,
+              color: theme.canvasColor,
             ),
             Expanded(
               child: Text(
-                suraName,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+                  suraName,
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: MyTheme.thememode != ThemeMode.dark
+                          ? Colors.black
+                          : Colors.white)),
             ),
           ],
         ),

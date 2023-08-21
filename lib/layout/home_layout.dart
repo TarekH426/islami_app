@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_app/core/style/my_theme.dart';
 import 'package:islami_app/modules/hadeth/hadeth_view.dart';
 import 'package:islami_app/modules/quran/quran_view.dart';
 import 'package:islami_app/modules/radio/radio_view.dart';
@@ -27,9 +29,11 @@ class _HomeLayoutState extends State<HomeLayout> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/background_light.png"),
+              image: AssetImage(MyTheme.thememode != ThemeMode.dark
+                  ? "assets/images/background_light.png"
+                  : "assets/images/background_dark.png"),
               fit: BoxFit.fill)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -44,28 +48,27 @@ class _HomeLayoutState extends State<HomeLayout> {
               selectedIndex = index;
             });
           },
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("assets/images/ic_quran.png")),
-              label: "Quran",
-            ),
+                icon: ImageIcon(AssetImage("assets/images/ic_quran.png")),
+                label: AppLocalizations.of(context)!.quran),
             BottomNavigationBarItem(
               icon: ImageIcon(AssetImage("assets/images/ic_hadeth.png")),
-              label: "Hadeth",
+              label: AppLocalizations.of(context)!.hadeth,
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(AssetImage("assets/images/ic_sebha.png")),
-              label: "Tasbeh",
+              label: AppLocalizations.of(context)!.tasbeh,
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(AssetImage("assets/images/ic_radio.png")),
-              label: "Radio",
+              label: AppLocalizations.of(context)!.radio,
             ),
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.settings,
                 ),
-                label: "settings")
+                label: AppLocalizations.of(context)!.settings)
           ],
         ),
       ),
